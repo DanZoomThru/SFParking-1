@@ -1,5 +1,5 @@
 ## What is This?
-This is a Parking Reservation app for San Francisco
+This is a Parking Reservation app for San Francisco.
 
 ### Getting Started
 
