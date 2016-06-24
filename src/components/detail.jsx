@@ -9,9 +9,33 @@ export default class Detail extends Component {
 
   render(){
     return (
-      <div style={{ height: 120}}>
-        <Popover placement="top" positionLeft={-20} positionTop={-250} title="Popup title">
-          And here's some <strong>amazing</strong> content. It's very engaging. right?
+      <div style={{ width: 120}}>
+        <Popover
+          key={this.props.id}
+          id={this.props.id} 
+          placement="top" 
+          positionLeft={-35} positionTop={-230} 
+          title="Parking Near Moscone Center">
+          <div className="row">
+            <div className="col-xs-4 text-center">
+              <h6>Name</h6>
+              <p>placeholder</p>
+            </div>
+            <div className="col-xs-4 text-center">
+              <h6>Spot No.</h6>
+              <p>{this.props.spot.id}</p>
+            </div>
+            <div className="col-xs-4 text-center">
+              <h6>Cost</h6>
+              <p>
+                <span>
+                  {this.props.spot.cost_per_minute}
+                </span>
+                <span>/min</span>
+              </p>
+            </div>
+          </div>
+          <button className="btn btn-default center-block">Pay and Reserve</button>
         </Popover>
       </div>
     );
