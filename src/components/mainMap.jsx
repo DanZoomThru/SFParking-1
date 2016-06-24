@@ -5,16 +5,15 @@ import Marker from './marker.jsx'
 
 export default class MainMap extends Component {
   static defaultProps = {
-    center: {lat: 37.7730933, lng: -122.4125351},
     zoom: 15,
   };
 
   constructor(props) {
     super(props);
-  }
 
-  render() {
-    const spots = [
+    this.state = {
+      center: {lat: 37.7730933, lng: -122.4125351},
+      spots: [
       {
           "id": 2017,
           "lat": "37.773090",
@@ -25,8 +24,8 @@ export default class MainMap extends Component {
           "min_reserve_time_mins": 10,
           "is_reserved": false,
           "reserved_until": null
-      },
-      {
+        },
+        {
           "id": 2020,
           "lat": "37.774900",
           "lng": "-122.419400",
@@ -36,15 +35,19 @@ export default class MainMap extends Component {
           "min_reserve_time_mins": 10,
           "is_reserved": false,
           "reserved_until": null
-      }
-    ];
+        }
+      ]
+    };
+  }
+
+  render() {
     return (
       <div className="map">
         <GoogleMap
-          defaultCenter={this.props.center}
+          defaultCenter={this.state.center}
           defaultZoom={this.props.zoom}>
           {
-            spots.map((spot) => {
+            this.state.spots.map((spot) => {
               return ( 
                 <Marker key={spot.id}
                   lat={spot.lat} 
