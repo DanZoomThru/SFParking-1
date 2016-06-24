@@ -1,12 +1,14 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+import { Overlay } from 'react-bootstrap';
+
+import Detail from './detail.jsx'
 
 export default class Marker extends Component {
   constructor(props) {
     super(props);
-  }
-
-  detail() {
-    console.log('maker clicked!');
+    this.state = { show: false };
   }
 
   render() {
@@ -34,10 +36,21 @@ export default class Marker extends Component {
     };
 
     return (
-       <div style={greatPlaceStyle}  onClick={this.detail.bind(this)}>
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <div>
+        <div style={greatPlaceStyle} onClick={e => this.setState({ target: e.target, show: !this.state.show })}>
           {this.props.text}
-       </div>
+        </div>
+
+        <Overlay
+          show={this.state.show}
+          target={()=> ReactDOM.findDOMNode(this.state.target)}
+          placement="top"
+          container={this}
+          containerPadding={20}
+        >
+          <Detail />
+        </Overlay>
+      </div>
     );
   }
 }
