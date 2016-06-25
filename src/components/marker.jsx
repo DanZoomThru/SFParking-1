@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import { Overlay } from 'react-bootstrap';
+import { Overlay, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
 import Detail from './detail.jsx'
 
@@ -40,24 +40,12 @@ export default class Marker extends Component {
     };
 
     return (
-      <div>
+      <OverlayTrigger trigger="click" rootClose placement="top" overlay={
+        <Detail spot={this.props.spot}/>}>
         <div style={greatPlaceStyle} onClick={this.markerSelected.bind(this)}>
           {this.props.spot.id}
         </div>
-
-        <Overlay
-          key={this.props.spot.id}
-          show={this.state.show}
-          target={()=> ReactDOM.findDOMNode(this.state.target)}
-          placement="top"
-          container={this}
-          containerPadding={20}
-        >
-          <Detail 
-            key={this.props.spot.id}
-            spot={this.props.spot}/>
-        </Overlay>
-      </div>
-    );
+      </OverlayTrigger>
+    )
   }
 }
