@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './header.jsx';
 import MainMap from './mainMap.jsx';
+import ConfirmModal from './confirmModal.jsx';
 
 import initialData from '../initialData.js'
 
@@ -9,10 +10,10 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentLocation: initialData.currentLocation,
       target: initialData.target,
       center: initialData.center,
-      currentSpots: initialData.currentSpots
+      openSpots: initialData.openSpots,
+      reservedSpots: initialData.reservedSpots
     };
   }
 
@@ -30,7 +31,14 @@ export default class App extends React.Component {
 
   showSpots(spots){
     this.setState({
-      currentSpots: spots
+      openSpots: spots
+    });
+  }
+
+  addToReserved(spot) {
+    let newReservedSpots = this.state.reservedSpots.concat(spot);
+    this.setState({
+      reservedSpots: newReservedSpots
     });
   }
 
@@ -38,15 +46,18 @@ export default class App extends React.Component {
     return (
       <div>
         <Header 
-          currentLocation={this.state.currentLocation} 
+          target={this.state.target}
           showSpots={this.showSpots.bind(this)}
           setCenter={this.setCenter.bind(this)}
           setTarget={this.setTarget.bind(this)} />
-        <MainMap 
+        <MainMap
           center={this.state.center}
           target={this.state.target}
-          spots={this.state.currentSpots} 
-          setCenter={this.setCenter.bind(this)} />
+          openSpots={this.state.openSpots}
+          reservedSpots={this.state.reservedSpots} 
+          setCenter={this.setCenter.bind(this)}
+          showSpots={this.showSpots.bind(this)}
+          addToReserved={this.addToReserved.bind(this)} />
       </div>
     );
   }
