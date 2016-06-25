@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      input: '1 Market st.',
+      input: 'Moscone Center',
       target: initialData.target,
       center: initialData.center,
       openSpots: initialData.openSpots,

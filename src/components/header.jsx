@@ -43,7 +43,7 @@ export default class Header extends React.Component {
         <h2 className="text-center">PARKING APP</h2>
         <div className="search">
             <div className="input-group">
-              <input onChange={this.updateInput.bind(this)} type="text" className="form-control" placeholder="Search for parking spots near...ex.1 Market st." />
+              <input onChange={this.updateInput.bind(this)} type="text" className="form-control" placeholder="Search for parking spots near...ex.Moscone Center, 1 Market st. etc." />
               <span className="input-group-btn">
                 <button className="btn btn-default" type="button" 
                   onClick={
