@@ -1,7 +1,7 @@
 ## What is This?
-![component markup](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/appMarkup.jpg)
----
 This is a Parking Reservation app for San Francisco using React.
+---
+![component markup](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/appMarkup.jpg)
 
 ### Getting Started
 
