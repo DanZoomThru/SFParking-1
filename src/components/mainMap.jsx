@@ -43,6 +43,7 @@ export default class MainMap extends Component {
                   setCenter={this.props.setCenter}
                   showSpots={this.props.showSpots}
                   target={this.props.target}
+                  input={this.props.input}
                   addToReserved={this.props.addToReserved.bind(this)} />
                 )
             })

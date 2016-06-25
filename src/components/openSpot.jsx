@@ -39,8 +39,16 @@ export default class OpenSpot extends Component {
     };
 
     return (
-      <OverlayTrigger trigger="click" rootClose placement="top" overlay={
-        <OpenSpotPopover showSpots={this.props.showSpots} addToReserved={this.props.addToReserved} spot={this.props.spot} target={this.props.target} /> }>
+      <OverlayTrigger trigger="click" rootClose placement="top" 
+        overlay={
+          <OpenSpotPopover 
+            showSpots={this.props.showSpots} 
+            addToReserved={this.props.addToReserved} 
+            spot={this.props.spot} 
+            target={this.props.target}
+            input={this.props.input}
+          /> 
+        }>
         <div className="marker" style={spotStyle} onClick={this.markerSelected.bind(this)}>
           <div style={dotStyle}></div>
         </div>

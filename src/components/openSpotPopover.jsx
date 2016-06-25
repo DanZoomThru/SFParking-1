@@ -45,7 +45,7 @@ export default class OpenSpotPopover extends Component {
     return  (
       <Popover placement="top"
       positionLeft={window.innerWidth/2 - 138} positionTop={window.innerHeight/2 - 150} 
-      title="Parking Near Moscone Center">
+      title={`Parking Near ${this.props.input}`}>
         <div className="row">
           <div className="col-xs-6 text-center">
             <h6>Spot No.</h6>
