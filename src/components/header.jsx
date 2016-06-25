@@ -3,6 +3,13 @@ import React from 'react';
 export default class Header extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      input: '1 Market st.'
+    }
+  }
+
+  componentWillMount() {
+    this.getSpots(this.props.target);
   }
 
   getSpots(location){
@@ -19,14 +26,20 @@ export default class Header extends React.Component {
       url  : 'https://maps.googleapis.com/maps/api/geocode/json',
       data : {
         sensor  : false,
-        address : 'Ferry Building, SF' // TODO: change to input
+        address : this.state.input + ', SF'// TODO: change to input
       },
       success : ( data, textStatus ) => {
-        console.log('--> data:', data.results)
         this.props.setCenter(data.results[0].geometry.location);
         this.props.setTarget(data.results[0].geometry.location);
         this.getSpots(data.results[0].geometry.location);
       }
+    });
+  }
+
+  updateInput(e){
+    console.log(e.target.value);
+    this.setState({
+      input: e.target.value
     });
   }
 
@@ -36,11 +49,12 @@ export default class Header extends React.Component {
         <h2 className="text-center">PARKING APP</h2>
         <div className="search">
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="Search for parking spots near..." />
+              <input onChange={this.updateInput.bind(this)} type="text" className="form-control" placeholder="Search for parking spots near...ex.1 Market st." />
               <span className="input-group-btn">
                 <button className="btn btn-default" type="button" 
                   onClick={
-                    this.getCurrentLatLng.bind(this)}>Find Parking Spots!</button>
+                    this.getCurrentLatLng.bind(this)}>
+                  Find Parking Spots!</button>
               </span>
             </div>
           </div>
