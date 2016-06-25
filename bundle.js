@@ -20404,6 +20404,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = {
+	      input: '1 Market st.',
 	      target: _initialData2.default.target,
 	      center: _initialData2.default.center,
 	      openSpots: _initialData2.default.openSpots,
@@ -20442,6 +20443,13 @@
 	      });
 	    }
 	  }, {
+	    key: 'updateInput',
+	    value: function updateInput(value) {
+	      this.setState({
+	        input: value
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -20449,12 +20457,15 @@
 	        null,
 	        _react2.default.createElement(_header2.default, {
 	          target: this.state.target,
+	          input: this.state.input,
+	          updateInput: this.updateInput.bind(this),
 	          showSpots: this.showSpots.bind(this),
 	          setCenter: this.setCenter.bind(this),
 	          setTarget: this.setTarget.bind(this) }),
 	        _react2.default.createElement(_mainMap2.default, {
 	          center: this.state.center,
 	          target: this.state.target,
+	          input: this.state.input,
 	          openSpots: this.state.openSpots,
 	          reservedSpots: this.state.reservedSpots,
 	          setCenter: this.setCenter.bind(this),
@@ -20500,12 +20511,7 @@
 	  function Header(props) {
 	    _classCallCheck(this, Header);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
-
-	    _this.state = {
-	      input: '1 Market st.'
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).call(this, props));
 	  }
 
 	  _createClass(Header, [{
@@ -20534,7 +20540,7 @@
 	        url: 'https://maps.googleapis.com/maps/api/geocode/json',
 	        data: {
 	          sensor: false,
-	          address: this.state.input + ', SF' // TODO: change to input
+	          address: this.props.input + ', SF' // TODO: change to input
 	        },
 	        success: function success(data, textStatus) {
 	          _this3.props.setCenter(data.results[0].geometry.location);
@@ -20546,10 +20552,7 @@
 	  }, {
 	    key: 'updateInput',
 	    value: function updateInput(e) {
-	      console.log(e.target.value);
-	      this.setState({
-	        input: e.target.value
-	      });
+	      this.props.updateInput(e.target.value);
 	    }
 	  }, {
 	    key: 'render',
@@ -20681,6 +20684,7 @@
 	              setCenter: _this2.props.setCenter,
 	              showSpots: _this2.props.showSpots,
 	              target: _this2.props.target,
+	              input: _this2.props.input,
 	              addToReserved: _this2.props.addToReserved.bind(_this2) });
 	          }),
 	          this.props.reservedSpots.map(function (spot) {
@@ -23528,7 +23532,14 @@
 
 	      return _react2.default.createElement(
 	        _reactBootstrap.OverlayTrigger,
-	        { trigger: 'click', rootClose: true, placement: 'top', overlay: _react2.default.createElement(_openSpotPopover2.default, { showSpots: this.props.showSpots, addToReserved: this.props.addToReserved, spot: this.props.spot, target: this.props.target }) },
+	        { trigger: 'click', rootClose: true, placement: 'top',
+	          overlay: _react2.default.createElement(_openSpotPopover2.default, {
+	            showSpots: this.props.showSpots,
+	            addToReserved: this.props.addToReserved,
+	            spot: this.props.spot,
+	            target: this.props.target,
+	            input: this.props.input
+	          }) },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'marker', style: spotStyle, onClick: this.markerSelected.bind(this) },
@@ -42921,7 +42932,7 @@
 	        _reactBootstrap.Popover,
 	        { placement: 'top',
 	          positionLeft: window.innerWidth / 2 - 138, positionTop: window.innerHeight / 2 - 150,
-	          title: 'Parking Near Moscone Center' },
+	          title: 'Parking Near ' + this.props.input },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
