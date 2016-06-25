@@ -2,7 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import GoogleMap from 'google-map-react';
 
 import Marker from './marker.jsx'
-import Center from './center.jsx'
+import Target from './target.jsx'
 
 export default class MainMap extends Component {
   static defaultProps = {
@@ -17,20 +17,23 @@ export default class MainMap extends Component {
     return (
       <div className="map">
         <GoogleMap
-          center={this.props.currentCenter}
-          defaultZoom={this.props.zoom}>
+          center={this.props.center}
+          defaultZoom={this.props.zoom} >
           {
             this.props.spots.map((spot) => {
-              return ( 
-                <Marker key={spot.id} spot={spot}
+              return (
+                <Marker
+                  setCenter={this.props.setCenter}
+                  key={spot.id} 
+                  spot={spot}
                   lat={spot.lat} 
-                  lng={spot.lng} text={spot.id} />
+                  lng={spot.lng} />
                 )
             })
           }
-          <Center
-            lat={this.props.currentCenter.lat} 
-            lng={this.props.currentCenter.lng} />
+          <Target
+            lat={this.props.target.lat} 
+            lng={this.props.target.lng} />
         </GoogleMap>
       </div>
     );

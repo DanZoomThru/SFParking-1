@@ -19,11 +19,12 @@ export default class Header extends React.Component {
       url  : 'https://maps.googleapis.com/maps/api/geocode/json',
       data : {
         sensor  : false,
-        address : this.props.currentLocation
+        address : 'Ferry Building, SF' // TODO: change to input
       },
       success : ( data, textStatus ) => {
         console.log('--> data:', data.results)
         this.props.setCenter(data.results[0].geometry.location);
+        this.props.setTarget(data.results[0].geometry.location);
         this.getSpots(data.results[0].geometry.location);
       }
     });

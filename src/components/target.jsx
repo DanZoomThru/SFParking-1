@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Detail from './detail.jsx'
 
-export default class Center extends Component {
+export default class Target extends Component {
   constructor(props) {
     super(props);
   }

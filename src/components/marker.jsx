@@ -8,7 +8,14 @@ import Detail from './detail.jsx'
 export default class Marker extends Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
+    this.state = {
+      show: false 
+    };
+  }
+
+  markerSelected(e) {
+    this.setState({ target: e.target, show: !this.state.show });
+    this.props.setCenter({lat: Number(this.props.spot.lat), lng: Number(this.props.spot.lng)});
   }
 
   render() {
@@ -34,8 +41,8 @@ export default class Marker extends Component {
 
     return (
       <div>
-        <div style={greatPlaceStyle} onClick={e => this.setState({ target: e.target, show: !this.state.show })}>
-          {this.props.text}
+        <div style={greatPlaceStyle} onClick={this.markerSelected.bind(this)}>
+          {this.props.spot.id}
         </div>
 
         <Overlay

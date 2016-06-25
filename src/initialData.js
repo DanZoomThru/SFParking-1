@@ -1,6 +1,7 @@
 module.exports = {
   currentLocation: 'Moscone Center, SF',
-  currentCenter: {lat: 37.784173, lng: -122.401557},
+  target: {lat: 37.784173, lng: -122.401557},
+  center: {lat: 37.784173, lng: -122.401557},
   currentSpots: [
     {
       "id": 909,
