@@ -37,7 +37,6 @@ go to http://localhost:8080/
 * Webpack is used for transpiling ES6 to ES5 as well as compiling supporting files to bundle.js.
 
 ### How does it work?
-Webpack-dev-server is used for live compiling during development.  The node_module folder is not included, run `npm install` to install all dependencies, and see package.json for details.  Run `npm start` to start the webpack dev server, and the app is served at localhost:8080.  The app is broken down to react components. See the component jsx file in src/component folder. See the following image for component markup. 
----
-![component markup](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/appMarkup.jpg)
----
+Webpack-dev-server is used for live compiling during development.  The node_module folder is not included, run `npm install` to install all dependencies, and see package.json for details.  Run `npm start` to start the webpack dev server, and the app is served at localhost:8080.  
+
+The app is broken down to react components. See the component jsx file in src/component folder. See the following image for component markup.
