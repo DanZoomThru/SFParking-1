@@ -1,7 +1,7 @@
 ## What is This?
 This is a Parking Reservation app for San Francisco using React.
 ---
-![component markup](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/appMarkup.jpg)
+![app demo](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/demo.gif)
 
 ### Getting Started
 
@@ -28,7 +28,7 @@ Webpack-dev-server is used for live compiling during development.  The node_modu
 
 The app is broken down to react components. See the component jsx file in src/component folder. See the following image for component markup. 
 ---
-![app demo](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/demo.gif)
+![component markup](https://raw.githubusercontent.com/michelleheh/SFParking/master/img/appMarkup.jpg)
 ---
 
 ### Meeting the specs
