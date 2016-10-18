@@ -40,7 +40,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
-        <h2 className="text-center">PARKING APP</h2>
+        <h2 className="text-center">SAN FRANCISCO PARKING BY ZOOMTHRU </h2>
         <div className="search">
             <div className="input-group">
               <input onChange={this.updateInput.bind(this)} type="text" className="form-control" placeholder="Search for parking spots near...ex.Moscone Center, 1 Market st. etc." />
